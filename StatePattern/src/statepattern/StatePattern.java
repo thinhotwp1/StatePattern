@@ -11,7 +11,6 @@ import statepattern.object.GumballMachine;
  * @author Administrator
  */
 public class StatePattern {
-    
 
     /**
      * @param args the command line arguments
@@ -21,10 +20,31 @@ public class StatePattern {
         GumballMachine machine = new GumballMachine(10);
         machine.insertQuater(); // test các trạng thái 
         machine.turnCrank();
-        machine.insertQuater();
-        machine.insertQuater();
+        machine.insertQuater(); // test các trạng thái 
         machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
         machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        // Test 10 lần xem có được lần winner nào không :v
+        // Sau khi hết kẹo cho thêm kẹo vào
+        machine.choThemKeoVaoMay(100);
+        System.out.println(machine.getCount());
+        machine.insertQuater(); // test các trạng thái 
+        machine.turnCrank();
+        
     }
-    
+
 }

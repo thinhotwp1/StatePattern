@@ -8,37 +8,36 @@ import statepattern.object.GumballMachine;
 
 /**
  *
- * @author Administrator
+ * @author DUY THINH
  */
-public class NoQuaterState implements State{
-    // Trạng thái không có xu
-    
-    GumballMachine gumballMachine;
-    
+public class WinnerState implements State{
+        // Trạng thái chiến thắng được nhận 2 kẹo, khi quay tay quay có 10% trở thành winner
 
-    public NoQuaterState(GumballMachine gumballMachine) {
+    GumballMachine gumballMachine;
+
+    public WinnerState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
 
     @Override
     public void insertQuater() {
-        System.out.println("Bạn đã cho xu vào !");
-        gumballMachine.setState(gumballMachine.getHasQuaterState());
+        System.out.println("Không thể thêm xu");
     }
 
     @Override
     public void ejectQuater() {
-        System.out.println("Chưa cho xu vào !");
+        System.out.println("Không thể trả xu");
     }
 
     @Override
     public void turnCrank() {
-        System.out.println("Phải cho xu vào trước khi quay tay quay !");
+        System.out.println("Không thể quay tay ");
     }
 
     @Override
     public void dispense() {
-        System.out.println("Phải cho xu và quay tay quay trước !");
+        System.out.println("Bạn là người chiến thắng");
+        System.out.println("Bạn được nhận 2 kẹo");
+        gumballMachine.countDownTwice();
     }
-    
 }

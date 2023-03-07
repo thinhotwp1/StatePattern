@@ -11,7 +11,8 @@ import statepattern.object.GumballMachine;
  * @author Administrator
  */
 public class SoldState implements State{
-    
+        // Trạng thái cho ra kẹo
+
     GumballMachine gumballMachine;
 
     public SoldState(GumballMachine gumballMachine) {

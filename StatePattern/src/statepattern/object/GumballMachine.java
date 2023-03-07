@@ -9,6 +9,7 @@ import statepattern.state.NoQuaterState;
 import statepattern.state.SoldOutState;
 import statepattern.state.SoldState;
 import statepattern.state.State;
+import statepattern.state.WinnerState;
 
 /**
  *
@@ -20,7 +21,7 @@ public class GumballMachine {
     State soldOutState;
     State noQuaterState;
     State hasQuaterState;
-
+    State winnerState;
     State state = soldOutState; // Mặc định khi lấy máy ra sẽ không có 
     // kẹo, cho kẹo bằng cách gọi máy và gán số kẹo vào
 
@@ -32,6 +33,7 @@ public class GumballMachine {
         soldOutState = new SoldOutState(this);
         noQuaterState = new NoQuaterState(this);
         hasQuaterState = new HasQuaterState(this);
+        winnerState = new WinnerState(this);
         if (count > 0) {
             state = noQuaterState;
         }
@@ -59,6 +61,19 @@ public class GumballMachine {
         } else {
             state = noQuaterState;
         }
+    }
+
+    public void countDownTwice() { // hàm trừ đi kẹo đã lấy winner
+        count = count - 2;
+        if (count == 0) {
+            state = soldOutState;
+        } else {
+            state = noQuaterState;
+        }
+    }
+
+    public void choThemKeoVaoMay(int soKeo) {
+        this.count = this.count + soKeo;
     }
 
     // các method get set các state 
@@ -101,4 +116,21 @@ public class GumballMachine {
     public void setState(State state) {
         this.state = state;
     }
+
+    public State getWinnerState() {
+        return winnerState;
+    }
+
+    public void setWinnerState(State winnerState) {
+        this.winnerState = winnerState;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
 }

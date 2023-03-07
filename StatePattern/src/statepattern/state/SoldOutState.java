@@ -10,8 +10,9 @@ import statepattern.object.GumballMachine;
  *
  * @author Administrator
  */
-public class SoldOutState implements State{
-    
+public class SoldOutState implements State {
+    // Trạng thái hết kẹo 
+
     GumballMachine gumballMachine;
 
     public SoldOutState(GumballMachine gumballMachine) {
@@ -19,8 +20,13 @@ public class SoldOutState implements State{
     }
 
     @Override
-    public void insertQuater() {
-        System.out.println("Hết kẹo rồi không thể cho thêm xu !");
+    public void insertQuater() { // Sau khi cho thêm kẹo thì trở lại trạng thái k có xu
+        if (gumballMachine.getCount() > 0) {
+            gumballMachine.setState(gumballMachine.getNoQuaterState());
+            gumballMachine.insertQuater();
+        } else {
+            System.out.println("Hết kẹo rồi không thể cho thêm xu !");
+        }
     }
 
     @Override
@@ -37,5 +43,5 @@ public class SoldOutState implements State{
     public void dispense() {
         System.out.println("Hết kẹo rồi không thể cho ra kẹo !");
     }
-    
+
 }

@@ -11,9 +11,10 @@ import statepattern.object.GumballMachine;
  * @author Administrator
  */
 public class HasQuaterState implements State {
+    // Trạng thái có xu
 
     GumballMachine gumballMachine;
-    
+
     public HasQuaterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
@@ -30,8 +31,13 @@ public class HasQuaterState implements State {
 
     @Override
     public void turnCrank() {
-        System.out.println("Đang quay tay quay !");
-        gumballMachine.setState(gumballMachine.getSoldState());
+        System.out.println("Đang quay tay quay... ");
+        int randomNumber = (int) (Math.random() * 10) + 1;
+        if (randomNumber == 10 && gumballMachine.getCount()>=2) {
+            gumballMachine.setState(gumballMachine.getWinnerState());
+        } else {
+            gumballMachine.setState(gumballMachine.getSoldState());
+        }
     }
 
     @Override
